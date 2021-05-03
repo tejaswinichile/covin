@@ -1,0 +1,6 @@
+# Ignore our .env file since it can contain credentials we shouldn't make public
+.env
+
+# Ignore environment specific files
+.DS_Store
+.vscode
