@@ -1,0 +1,8 @@
+/Users/tejaswinichile/workspace/covin/Rakefile:9: warning: calling URI.open via Kernel#open is deprecated, call URI.open directly or use URI#open
+{"sessions"=>[]}
+/Users/tejaswinichile/workspace/covin/Rakefile:16: warning: calling URI.open via Kernel#open is deprecated, call URI.open directly or use URI#open
+{"sessions"=>[]}
+/Users/tejaswinichile/workspace/covin/Rakefile:24: warning: calling URI.open via Kernel#open is deprecated, call URI.open directly or use URI#open
+{"sessions"=>[]}
+/Users/tejaswinichile/workspace/covin/Rakefile:31: warning: calling URI.open via Kernel#open is deprecated, call URI.open directly or use URI#open
+{"sessions"=>[]}

@@ -1,0 +1,16 @@
+GEM
+  specs:
+    chronic (0.10.2)
+    rake (13.0.3)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
+
+PLATFORMS
+  x86_64-darwin-18
+
+DEPENDENCIES
+  rake
+  whenever
+
+BUNDLED WITH
+   2.2.16

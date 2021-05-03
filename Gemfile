@@ -1,0 +1,2 @@
+gem 'whenever'
+gem 'rake'
