@@ -7,7 +7,7 @@
 #
 set :output, "./cron_log.log"
 #
-every 1.hours do
+every 30.minutes do
   rake 'covin:check_available_slots'
 end
 #
