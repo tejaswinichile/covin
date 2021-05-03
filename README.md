@@ -2,9 +2,12 @@
 checks covin slots and create beep sound
 
 ## Setup
-Clone the folder to your machine
-go to the folder : `cd covin`
+1. Clone the folder to your machine
 
-Note: run `chmod 777 ./bundle_install.sh` to execute the file
-run: ./bundle_install.sh 
+2. go to the folder : `cd covin`
 
+3. Note: run `chmod 777 ./bundle_install.sh` to execute the file
+
+4. run: ./bundle_install.sh 
+
+Then you hear a sound when the slot will be available 
