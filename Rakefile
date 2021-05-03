@@ -2,7 +2,7 @@ require 'rake'
 require 'open-uri'
 require 'json'
 
-PIN_CODES = %w[416235 416005].freeze
+PIN_CODES = %w[416235 416005 416119 416216].freeze
 
 def slot_available?(pin:, date:)
   response = open(
@@ -17,6 +17,9 @@ end
 namespace :covin do
   desc 'Send alerts for all available appointments'
   task :check_available_slots do
+
+    system("check inn progress")
+
     PIN_CODES.each do |pin_code|
       # Today
       date = Date.today.strftime('%d-%m-%Y')
