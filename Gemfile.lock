@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     chronic (0.10.2)
     rake (13.0.3)
@@ -6,7 +7,9 @@ GEM
       chronic (>= 0.6.3)
 
 PLATFORMS
+  ruby
   x86_64-darwin-18
+  x86_64-darwin-20
 
 DEPENDENCIES
   rake
