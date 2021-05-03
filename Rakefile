@@ -18,7 +18,7 @@ namespace :covin do
   desc 'Send alerts for all available appointments'
   task :check_available_slots do
 
-    system("check inn progress")
+    system("check in progress")
 
     PIN_CODES.each do |pin_code|
       # Today
