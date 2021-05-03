@@ -1,24 +1,46 @@
 require 'rake'
 require 'open-uri'
 require 'json'
+require 'vonage'
 
-PIN_CODES = %w[416235 416005 416119 416216].freeze
+
+PIN_CODES = %w[416235 416005 416119 416216 416103 416207].freeze
+
+def sms_alert_config
+  @client = Vonage::Client.new(
+    api_key: "c9616804",
+    api_secret: "InQVWznLWoV675uW"
+  )
+end
 
 def slot_available?(pin:, date:)
-  response = open(
+  available_slots = []
+  response = URI.open(
     "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=#{pin}&date=#{date}"
   ).read
   sessions = JSON.parse(response)
   puts sessions.to_s
 
-  system("say slot available at #{pin}") if sessions['sessions'].any?
+  if sessions['sessions'].any?
+    system("say slot available at #{pin}")
+    available_slots << pin
+  end
+
+  if available_slots.any?
+    sms_alert_config
+    @client.sms.send(
+      from: "Vonage APIs",
+      to: "918485827731",
+      text: "slot available at #{available_slots.join(',')}"
+    )
+  end
 end
 
 namespace :covin do
   desc 'Send alerts for all available appointments'
   task :check_available_slots do
 
-    system("check in progress")
+    system("say check in progress")
 
     PIN_CODES.each do |pin_code|
       # Today

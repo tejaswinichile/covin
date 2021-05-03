@@ -2,9 +2,22 @@ GEM
   remote: https://rubygems.org/
   specs:
     chronic (0.10.2)
+    jwt (2.2.3)
+    nexmo-jwt (0.1.2)
+      jwt (~> 2)
+    phonelib (0.6.50)
     rake (13.0.3)
+    rexml (3.2.5)
+    sorbet-runtime (0.5.6397)
+    vonage (7.4.0)
+      nexmo-jwt (~> 0.1.2)
+      phonelib
+      rexml
+      sorbet-runtime (~> 0.5)
+      zeitwerk (~> 2, >= 2.2)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
@@ -13,6 +26,7 @@ PLATFORMS
 
 DEPENDENCIES
   rake
+  vonage
   whenever
 
 BUNDLED WITH
