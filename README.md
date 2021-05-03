@@ -2,13 +2,16 @@
 checks covin slots and create beep sound
 
 ## Setup
-1. Clone the folder to your machine
+## In 4 simple steps
 
-2. go to the folder : `cd covin`
+1. clone the repo
+2. go to the folder `cd covin`
+3. run `chmod 777 bundle_install.sh`
+4. run `./bundle_install.sh`
 
-3. Note: run `chmod 777 ./bundle_install.sh` to execute the file
+And you are good to go..
 
-4. run: ./bundle_install.sh 
+you will get the alert every 1 hour about the available slots.
 
 5. If you wan't add multiple pincodes just make the changes in `Rakefile`
  - update pincode=416235 with your pincode
@@ -18,8 +21,6 @@ checks covin slots and create beep sound
 
 There are multiple APIs available https://apisetu.gov.in/public/marketplace/api/cowin
 
+##PRs are welcome!!
 
-Then you hear a sound when the slot will be available 
 
-
-PRs are welcome!!
