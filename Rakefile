@@ -11,7 +11,7 @@ def slot_available?(pin:, date:)
   sessions = JSON.parse(response)
   puts sessions.to_s
 
-  system('say "beep"') if sessions['sessions'].any?
+  system("say slot available at #{pin}") if sessions['sessions'].any?
 end
 
 namespace :covin do
