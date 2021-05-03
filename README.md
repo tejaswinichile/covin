@@ -14,10 +14,9 @@ And you are good to go..
 you will get the alert every 1 hour about the available slots.
 
 5. If you wan't add multiple pincodes just make the changes in `Rakefile`
- - update pincode=416235 with your pincode
- - like if you want to knnow the slot available for your area suppose 411001 for next 2-3 days then update 416235 with 411001.
- - It will look like the below
- - response = open("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=411001&date=#{date}").read
+ - update pincode array
+ 1. Open Rakefile check PIN_CODES=[416235, 416005] update this value to the value you wanted.
+ 2. If you want to know the slots for 411001, 411235 and 411216 then it will look like PIN_CODES=[411001, 411216, 411235]
 
 There are multiple APIs available https://apisetu.gov.in/public/marketplace/api/cowin
 
