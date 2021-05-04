@@ -34,11 +34,12 @@ def slot_available?(pin:, date:)
     end
   end
 
+  # add your number at to
   if available_slots.any?
     sms_alert_config
     @client.sms.send(
-      from: "Vonage APIs",
-      to: "918485827731",
+      from: "vaccine slot available alert",
+      to: "91**********",
       text: "slot available at #{available_slots.join(',')}"
     )
   end
