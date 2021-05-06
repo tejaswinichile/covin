@@ -1,5 +1,6 @@
 class ScheduleWithPinCodes
-  PIN_CODES = %w[416235 416005 416119 416216 416103 416207 416211].freeze
+  # 416235 416005 416119 416216 416103 416207 416211
+  PIN_CODES = %w[416213 416005 416007 416120 416115 416003 416002 416005].freeze
 
   def process
     system("say check in progress for the pin codes")
@@ -22,7 +23,7 @@ class ScheduleWithPinCodes
       slot_available?(pin: pin_code, date: date)
 
       # after 7 days
-      date = (Date.today + 7).strftime('%d-%m-%Y')
+      date = (Date.today + 4).strftime('%d-%m-%Y')
       slot_available?(pin: pin_code, date: date)
     end
   end
@@ -39,7 +40,8 @@ class ScheduleWithPinCodes
     age_limit = 18
 
     response = URI.open(
-      "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=#{pin}&date=#{date}"
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=#{pin}&date=#{date}",
+    "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51"
     ).read
     sessions = JSON.parse(response)
     available_sessions = sessions['sessions']

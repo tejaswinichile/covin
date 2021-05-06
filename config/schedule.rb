@@ -11,10 +11,10 @@ every 1.hours do
   rake 'covin:check_available_slots'
 end
 
-# every 1.hours do
-#   rake 'covin:check_available_slots_for_the_city'
-# end
-#
+every 1.hours do
+  rake 'covin:check_available_slots_for_the_city'
+end
+
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
