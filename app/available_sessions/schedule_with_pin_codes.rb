@@ -62,7 +62,7 @@ class ScheduleWithPinCodes
       sms_alert_config
       @client.sms.send(
         from: "Vonage APIs",
-        to: "918485827731",
+        to: "",
         text: "slot available at #{available_slots.join(',')}"
       )
     end
