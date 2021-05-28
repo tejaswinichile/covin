@@ -4,3 +4,4 @@
 # Ignore environment specific files
 .DS_Store
 .vscode
+config.json

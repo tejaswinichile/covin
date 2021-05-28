@@ -1,5 +1,12 @@
 class ScheduleWithCity
 
+  attr_reader :age_limit, :district_id
+
+  def initialize(config)
+    @age_limit = config['age_limit']
+    @district_id = config['district_id']
+  end
+
   def process
     system("say check in progress for the city")
 
@@ -30,8 +37,6 @@ class ScheduleWithCity
 
   def slot_available?(date:)
     available_slots = []
-    age_limit = 45
-    district_id = 371
 
     response = URI.open("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=#{district_id}&date=#{date}",
     "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51").read
@@ -44,9 +49,11 @@ class ScheduleWithCity
     if available_sessions.any?
       system("available sessions")
       available_sessions.each do |session|
-        if session['min_age_limit'] == age_limit
-          system("say slot available at #{pin}")
-          available_slots << { pin: pin, vaccine_name: session['vaccine'] }
+        if session['min_age_limit'] == age_limit &&
+           session['available_capacity'] > 0
+          pin_to_say = session['pincode'].to_s.split('').join(' ')
+          system("say slot available at #{pin_to_say}")
+          available_slots << { pin: session['pincode'], vaccine_name: session['vaccine'] }
         end
       end
     end
