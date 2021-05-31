@@ -1,11 +1,16 @@
 class ScheduleWithPinCodes
-  # 416235 416005 416119 416216 416103 416207 416211
-  PIN_CODES = %w[416213 416005 416007 416120 416115 416003 416002 416005].freeze
+  attr_reader :pin_codes, :age_limit, :config
+
+  def initialize(config)
+    @pin_codes = config['pin_codes']
+    @age_limit = config['age_limit']
+    @config = config
+  end
 
   def process
     system("say check in progress for the pin codes")
 
-    PIN_CODES.each do |pin_code|
+    pin_codes.each do |pin_code|
       # Today
       date = Date.today.strftime('%d-%m-%Y')
       slot_available?(pin: pin_code, date: date)
@@ -37,7 +42,7 @@ class ScheduleWithPinCodes
 
   def slot_available?(pin:, date:)
     available_slots = []
-    age_limit = 18
+    pin_to_say = pin.to_s.split('').join(' ')
 
     response = URI.open(
     "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=#{pin}&date=#{date}",
@@ -51,8 +56,9 @@ class ScheduleWithPinCodes
 
     if available_sessions.any?
       available_sessions.each do |session|
-        if session['min_age_limit'] == age_limit
-          system("say slot available at #{pin}")
+        if session['min_age_limit'] == age_limit &&
+           session['available_capacity'] > 0
+          system("say slot available at #{pin_to_say}")
           available_slots << { pin: pin, vaccine_name: session['vaccine'] }
         end
       end
@@ -62,7 +68,7 @@ class ScheduleWithPinCodes
       sms_alert_config
       @client.sms.send(
         from: "Vonage APIs",
-        to: "",
+        to: config['sms_to'],
         text: "slot available at #{available_slots.join(',')}"
       )
     end
